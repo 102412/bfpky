@@ -1,4 +1,4 @@
-/* Basic Reset */
+/* Reset */
 * {
   margin: 0;
   padding: 0;
@@ -8,56 +8,73 @@
 
 body {
   background-color: #ffffff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  overflow: hidden;
   height: 100vh;
-}
-
-/* Container */
-.container {
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
 }
 
 /* Glass Card */
 .glass-card {
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 20px;
-  padding: 60px 80px;
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(0, 0, 0, 0.05);
+  position: relative;
+  z-index: 10;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 25px;
+  padding: 80px 120px;
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(0, 0, 0, 0.08);
   text-align: center;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
 }
 
-/* Company Name */
 .company-name {
-  font-size: 2.5rem;
+  font-size: 3rem;
   font-weight: bold;
   color: #3a5a40; /* dark green/brownish tone */
-  margin-bottom: 40px;
-  letter-spacing: 1px;
+  letter-spacing: 2px;
 }
 
-/* Decorative Elements */
-.elements {
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-}
-
-.dot {
-  width: 12px;
-  height: 12px;
+/* Liquid blobs */
+.blob {
+  position: absolute;
   border-radius: 50%;
-  background: linear-gradient(135deg, #6b4226, #3a5a40);
-  animation: float 2s ease-in-out infinite;
+  opacity: 0.6;
+  filter: blur(40px);
+  animation: float 12s infinite alternate;
 }
 
-/* Simple floating animation */
+.green {
+  width: 250px;
+  height: 250px;
+  background: linear-gradient(135deg, #4b7742, #6bb06b);
+  top: 10%;
+  left: 15%;
+  animation-delay: 0s;
+}
+
+.brown {
+  width: 200px;
+  height: 200px;
+  background: linear-gradient(135deg, #6b4226, #a36b47);
+  top: 60%;
+  left: 70%;
+  animation-delay: 3s;
+}
+
+.lighter-green {
+  width: 150px;
+  height: 150px;
+  background: linear-gradient(135deg, #9fd88e, #5e8c4c);
+  top: 40%;
+  left: 40%;
+  animation-delay: 6s;
+}
+
+/* Floating animation */
 @keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
+  0% { transform: translate(0,0) scale(1); }
+  50% { transform: translate(30px,-20px) scale(1.1); }
+  100% { transform: translate(-20px,30px) scale(0.95); }
 }
