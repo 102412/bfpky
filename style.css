@@ -8,32 +8,76 @@
 
 body {
   background-color: #ffffff;
-  overflow: hidden;
+  overflow-x: hidden;
   height: 100vh;
+  position: relative;
+}
+
+/* Grid background */
+.grid-bg {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(rgba(0,0,0,0.02) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(0,0,0,0.02) 1px, transparent 1px);
+  background-size: 40px 40px;
+  z-index: 0;
+}
+
+/* Container */
+.container {
+  position: relative;
+  z-index: 10;
   display: flex;
   justify-content: center;
   align-items: center;
-  position: relative;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 /* Glass Card */
 .glass-card {
-  position: relative;
-  z-index: 10;
   background: rgba(255, 255, 255, 0.15);
   border-radius: 25px;
   padding: 80px 120px;
   backdrop-filter: blur(15px);
   border: 1px solid rgba(0, 0, 0, 0.08);
   text-align: center;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+  margin-bottom: 50px;
 }
 
 .company-name {
   font-size: 3rem;
   font-weight: bold;
-  color: #3a5a40; /* dark green/brownish tone */
+  color: #3a5a40;
   letter-spacing: 2px;
+}
+
+.ig-link {
+  display: inline-block;
+  margin-top: 20px;
+  text-decoration: none;
+  font-weight: bold;
+  color: #6b4226;
+  font-size: 1.2rem;
+}
+
+/* 3D wand */
+.wand {
+  position: relative;
+  width: 120px;
+  height: 400px;
+  margin-bottom: 50px;
+  transform-style: preserve-3d;
+}
+
+.wand img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transform-origin: center center;
+  transition: transform 0.2s ease-out;
 }
 
 /* Liquid blobs */
@@ -41,38 +85,17 @@ body {
   position: absolute;
   border-radius: 50%;
   opacity: 0.6;
-  filter: blur(40px);
+  filter: blur(50px);
   animation: float 12s infinite alternate;
+  z-index: 5;
 }
 
-.green {
-  width: 250px;
-  height: 250px;
-  background: linear-gradient(135deg, #4b7742, #6bb06b);
-  top: 10%;
-  left: 15%;
-  animation-delay: 0s;
-}
+.green { width: 250px; height: 250px; background: linear-gradient(135deg, #4b7742, #6bb06b); top: 10%; left: 15%; animation-delay: 0s; }
+.brown { width: 200px; height: 200px; background: linear-gradient(135deg, #6b4226, #a36b47); top: 60%; left: 70%; animation-delay: 3s; }
+.lighter-green { width: 150px; height: 150px; background: linear-gradient(135deg, #9fd88e, #5e8c4c); top: 40%; left: 40%; animation-delay: 6s; }
+.accent { width: 100px; height: 100px; background: linear-gradient(135deg, #7ea46c, #b2d1a4); top: 20%; left: 70%; animation-delay: 2s; }
+.accent2 { width: 120px; height: 120px; background: linear-gradient(135deg, #5c3f2b, #8b5a3c); top: 75%; left: 20%; animation-delay: 5s; }
 
-.brown {
-  width: 200px;
-  height: 200px;
-  background: linear-gradient(135deg, #6b4226, #a36b47);
-  top: 60%;
-  left: 70%;
-  animation-delay: 3s;
-}
-
-.lighter-green {
-  width: 150px;
-  height: 150px;
-  background: linear-gradient(135deg, #9fd88e, #5e8c4c);
-  top: 40%;
-  left: 40%;
-  animation-delay: 6s;
-}
-
-/* Floating animation */
 @keyframes float {
   0% { transform: translate(0,0) scale(1); }
   50% { transform: translate(30px,-20px) scale(1.1); }
