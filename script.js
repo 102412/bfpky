@@ -1,12 +1,13 @@
-// Optional: subtle floating motion for the dots on mouse move
-const dots = document.querySelectorAll('.dot');
+// Optional subtle floating with mouse movement
+const blobs = document.querySelectorAll('.blob');
 
 document.addEventListener('mousemove', (e) => {
-  const x = (e.clientX / window.innerWidth) - 0.5;
-  const y = (e.clientY / window.innerHeight) - 0.5;
+  const x = (e.clientX / window.innerWidth - 0.5) * 30;
+  const y = (e.clientY / window.innerHeight - 0.5) * 30;
 
-  dots.forEach((dot, i) => {
-    const speed = (i + 1) * 10;
-    dot.style.transform = `translate(${x * speed}px, ${y * speed}px)`;
+  blobs.forEach((blob, i) => {
+    const speed = (i + 1) * 0.5;
+    blob.style.transform = `translate(${x * speed}px, ${y * speed}px) scale(1)`;
   });
 });
+
